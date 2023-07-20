@@ -5,9 +5,11 @@
 
 ## Table of Contents
 
-- [In this repo](#in-this-repo)
+- [Requirements](#Requirements)
+- [Deployment](#Deployment)
+  - 
 - [Documentation](#documentation)
-  - [Http Methods](#HttpMethods)
+  - [Http Methods](#Http_Methods)
   - [Socket Methods](#SocketMethods)
 
 ## Requirements
@@ -16,17 +18,17 @@
 ### pm2 Deployment
 1. To install PM2, you can use the following command: ```npm install pm2 -g```
 1. To start a project using: ```pm2 start pm2.production.json```
-### Docker Deployment
+### DockerDeployment
 1. checkout source: ```git clone https://github.com/shzjj8882/room.git```
 1. start container: ```docker-compose up -d```
    
 ## Documentation
-### Http Methods
+### HttpMethods
 - Url：`/room/generate`
 - Method：`GET`
 - Response: `{ code: "05652b0173f841018d9cc6ce5a182b90"}`
 
-### Socket Methods
+### SocketMethods
 - Event: `join-room`
 - Arg: `string`
 - ArgName: `RoomId`
