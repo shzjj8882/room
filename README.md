@@ -3,6 +3,13 @@
   A communication service based on Express and Socket.io is a real-time messaging service that allows real-time communication between clients and servers using the Express framework and the Socket.io library.
 </p>
 
+## Table of Contents
+
+- [In this repo](#in-this-repo)
+- [Documentation](#documentation)
+  - [Http Methods](#HttpMethods)
+  - [Socket Methods](#SocketMethods)
+
 ## Requirements
 - node >= 14.0.0
 ## Deployment
@@ -12,13 +19,14 @@
 ### Docker Deployment
 1. checkout source: ```git clone https://github.com/shzjj8882/room.git```
 1. start container: ```docker-compose up -d```
-
-## Http Methods
+   
+## Documentation
+### Http Methods
 - Url：`/room/generate`
 - Method：`GET`
 - Response: `{ code: "05652b0173f841018d9cc6ce5a182b90"}`
 
-## Socket Methods
+### Socket Methods
 - Event: `join-room`
 - Arg: `string`
 - ArgName: `RoomId`
