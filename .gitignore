@@ -1,0 +1,6 @@
+.DS_Store
+.env.development.local
+.env.local
+.env.production.local
+node_modules
+dist

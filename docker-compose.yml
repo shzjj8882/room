@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  room:
+    build:
+      context: .
+    container_name: room
+    ports:
+      - "4000:80"
+    restart: on-failure
+volumes:
+  notused:
