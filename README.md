@@ -9,5 +9,5 @@
 1. To install PM2, you can use the following command: ```npm install pm2 -g```
 1. To start a project using: ```pm2 start pm2.production.json```
 ### Docker Deployment
-1. checkout source: ```git clone https://github.com/shjj8882/room.git```
+1. checkout source: ```git clone https://github.com/shzjj8882/room.git```
 1. start container: ```docker-compose up -d```
