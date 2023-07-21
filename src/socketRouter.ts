@@ -1,7 +1,8 @@
 import http from 'http';
 import {Server as SocketIO} from 'socket.io';
 import { logger } from './utils';
-export default (server: http.Server<typeof http.IncomingMessage, typeof http.ServerResponse>) => {
+import { CacheClass} from 'memory-cache'
+export default (server: http.Server<typeof http.IncomingMessage, typeof http.ServerResponse>,store:CacheClass<string,any>) => {
   const io = new SocketIO(server, {
     transports: ["websocket", "polling"],
     cors: {
@@ -28,7 +29,7 @@ export default (server: http.Server<typeof http.IncomingMessage, typeof http.Ser
         logger.socketDebug(`${socket.id} new-user emitted to room ${roomID}`);
         socket.broadcast.to(roomID).emit("new-user", socket.id);
       }
-
+      io.to(`${socket.id}`).emit('replay',store.get(roomID));
       io.in(roomID).emit(
         "room-user-change",
         sockets.map((socket) => socket.id),
@@ -38,6 +39,7 @@ export default (server: http.Server<typeof http.IncomingMessage, typeof http.Ser
     socket.on(
       "server-broadcast",
       (roomID: string, encryptedData: ArrayBuffer, iv: Uint8Array) => {
+        store.put(roomID,encryptedData);
         logger.socketDebug(`${socket.id} sends update to ${roomID}`);
         socket.broadcast.to(roomID).emit("client-broadcast", encryptedData, iv);
       },
